@@ -141,3 +141,7 @@ A borrowing transaction linking a member to a bookcopy.
  - One **Member** can have many **Loans**
  - A **Loan** always references a **BookCopy** and a **Member**
 
+
+## Migrations 
+
+Schema is managed via EF Core Code-First migrations. See the `Migrations/` folder for the full history of schema changes.
