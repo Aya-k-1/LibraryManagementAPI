@@ -1,6 +1,29 @@
 @LibraryManagementAPI_HostAddress = http://localhost:5112
 
-GET {{LibraryManagementAPI_HostAddress}}/weatherforecast/
+### Get all books
+GET {{LibraryManagementAPI_HostAddress}}/api/books
 Accept: application/json
 
 ###
+
+### Create a book
+POST {{LibraryManagementAPI_HostAddress}}/api/books
+Content-Type: application/json
+
+{
+    "title": "The Hobbit",
+    "isbn": "9780261102217",
+    "categoryId": 1
+}
+
+###
+
+### Update a book
+PUT {{LibraryManagementAPI_HostAddress}}/api/books/1
+Content-Type: application/json
+
+{
+    "title": "The Hobbit - Updated",
+    "isbn": "9780261102217",
+    "categoryId": 1
+}
