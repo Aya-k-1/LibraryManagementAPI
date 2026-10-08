@@ -26,4 +26,95 @@ Content-Type: application/json
     "title": "The Hobbit - Updated",
     "isbn": "9780261102217",
     "categoryId": 1
+
 }
+
+###
+
+### Get all categories
+GET {{LibraryManagementAPI_HostAddress}}/api/categories
+Accept: application/json
+
+### Create a category
+POST {{LibraryManagementAPI_HostAddress}}/api/categories
+Content-Type: application/json
+
+{
+    "name": "Science Fiction"
+}
+### Create a book
+POST {{LibraryManagementAPI_HostAddress}}/api/books
+Content-Type: application/json
+
+{
+    "title": "Dune",
+    "isbn": "9780441172719",
+    "categoryId": 2
+}
+
+### Create an author
+POST {{LibraryManagementAPI_HostAddress}}/api/authors
+Content-Type: application/json
+
+{
+    "firstName": "Frank",
+    "lastName": "Herbert"
+}
+### Add author to book
+POST {{LibraryManagementAPI_HostAddress}}/api/bookauthors
+Content-Type: application/json
+
+{
+    "bookId": 2,
+    "authorId": 1
+}
+
+### Create a book copy
+POST {{LibraryManagementAPI_HostAddress}}/api/bookcopies
+Content-Type: application/json
+
+{
+    "bookId": 2,
+    "copyNumber": "DUNE-001",
+    "condition": "Good",
+    "isAvailable": true
+}
+
+### Create a member
+POST {{LibraryManagementAPI_HostAddress}}/api/members
+Content-Type: application/json
+
+{
+    "fullName": "Aya Khalife",
+    "email": "aya.library.test@example.com"
+}
+
+### Borrow a book
+POST {{LibraryManagementAPI_HostAddress}}/api/loans
+Content-Type: application/json
+
+{
+    "bookCopyId": 1,
+    "memberId": 1,
+    "dueAt": "2026-10-15T18:00:00"
+}
+
+### Check the book copy
+GET {{LibraryManagementAPI_HostAddress}}/api/bookcopies/1
+
+
+### Try to borrow an already borrowed copy
+POST {{LibraryManagementAPI_HostAddress}}/api/loans
+Content-Type: application/json
+
+{
+    "bookCopyId": 1,
+    "memberId": 1,
+    "dueAt": "2026-10-20T18:00:00"
+}
+
+### Return the book
+POST {{LibraryManagementAPI_HostAddress}}/api/loans/1/return
+
+### Check returned loan
+GET {{LibraryManagementAPI_HostAddress}}/api/loans/1
